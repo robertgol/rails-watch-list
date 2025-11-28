@@ -1,5 +1,6 @@
 <div class="container">
   <h1>My watch list</h1>
+  <%= link_to "Create new list", new_list_path %>
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-4">
