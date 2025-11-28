@@ -1,14 +1,13 @@
-<div class="container">
-  <h1>My watch list</h1>
-  <%= link_to "Create new list", new_list_path %>
-  <div class="row">
-    <% @lists.each do |list| %>
-      <div class="col-4">
-        <div class="card">
-          <h2><%= list.name %></h2>
+<%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
+<div class="row g-3">
+  <% @lists.each do |list| %>
+    <div class="col-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="card-title"><%= list.name %></div>
           <%= link_to "go to details", list_path(list), class: "btn btn-primary" %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

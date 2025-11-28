@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWatchList</title>
+    <title>Watchlister</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= favicon_link_tag "clapperboard.png" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="d-flex flex-column justify-content-center text-center p-3 gap-3">
+        <h1>Watchlister</h1>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

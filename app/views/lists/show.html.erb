@@ -1,14 +1,25 @@
-<div class="container">
-  <h1><%= @list.name %></h1>
-  <div class="row">
-    <% @list.movies.each do |movie| %>
-      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-      <div class="col-4">
-        <%= movie.title %>
-        <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" %>
+<h1><%= @list.name %></h1>
+<div class="row g-3">
+  <% @list.movies.each do |movie| %>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <div class="col-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="card-title">
+            <%= movie.title %>
+          </div>
+          <div>
+            Overview: <%= movie.overview %>
+          </div>
+          <div>
+            Bookmark comment: <%= bookmark.comment %>
+          </div>
+          <div>Rating: <%= movie.rating %></div>
+          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" %>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-  <%= link_to "Back", lists_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
+<%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+<%= link_to "Back", lists_path, class: "btn btn-primary" %>
