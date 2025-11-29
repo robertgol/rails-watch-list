@@ -1,15 +1,16 @@
 <h1>Add a movie to <%= @list.name %></h1>
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <div class="" data-controller="tmdb-search">
+  <div data-controller="tmdb-search">
     <div>
-      <input type="text" class="form-control " placeholder="The godfather..." autocomplete="off" data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
+      <div>Select a movie</div>
+      <input type="text" class="form-control " placeholder="The godfather..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
       <div class="dropdown-menu shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; display: none;">
         <!-- Items will be injected here by the controller -->
       </div>
     </div>
     <div data-tmdb-search-target="movie">
     </div>
+    <%= f.input :comment %>
+    <%= f.button :submit, "Add movie", class: "btn btn-primary", disabled: true, data: { tmdb_search_target: "submit" } %>
   </div>
-  <%= f.input :comment %>
-  <%= f.button :submit, "Add movie", class: "btn btn-primary" %>
 <% end %>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tmdb-search"
 export default class extends Controller {
-  static targets = ["input", "results", "movie"]
+  static targets = ["input", "results", "movie", "submit"]
 
   connect() {
     this.timeout = null
@@ -131,6 +131,7 @@ export default class extends Controller {
         </div>
       `
       this.inputTarget.value = ''
+      this.submitTarget.disabled = false
     } catch (error) {
       console.error("Movie creation failed:", error)
     }
