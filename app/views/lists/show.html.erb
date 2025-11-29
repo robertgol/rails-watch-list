@@ -1,25 +1,29 @@
-<h1><%= @list.name %></h1>
-<div class="row g-3">
-  <% @list.movies.each do |movie| %>
-    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-    <div class="col-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="card-title">
+<h2 class="m-0 pt-3 px-3"><%= @list.name %></h1>
+<div class="flex-grow-1 p-3 overflow-y-auto overflow-x-hidden" style="scrollbar-width: none;">
+  <div class="row g-3">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100">
+          <div class="card-header">
             <%= movie.title %>
           </div>
-          <div>
-            Overview: <%= movie.overview %>
+          <div class="">
+            <div class="text-break">
+              Overview: <%= movie.overview %>
+            </div>
+            <div>
+              Bookmark comment: <%= bookmark.comment %>
+            </div>
+            <div>Rating: <%= movie.rating %></div>
+            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" %>
           </div>
-          <div>
-            Bookmark comment: <%= bookmark.comment %>
-          </div>
-          <div>Rating: <%= movie.rating %></div>
-          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-<%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-<%= link_to "Back", lists_path, class: "btn btn-primary" %>
+<div class="flex-shrink-0 border-top d-flex flex-column gap-3 p-3">
+  <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  <%= link_to "Back", lists_path, class: "btn btn-primary" %>
+</div>

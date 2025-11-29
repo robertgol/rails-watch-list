@@ -1,6 +1,10 @@
-<h1>New List</h1>
-<%= simple_form_for @list do |f| %>
-  <%= f.input :name, label: "What's the name of your list?", required: false, input_html: { autofocus: true } %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-<%= link_to "Back", lists_path, class: "btn btn-primary" %>
+<div class="flex-grow-1 d-flex flex-column text-center p-3 justify-content-end">
+  <h2 class="mb-0">New List</h1>
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name, label: "What's the name of your list?", required: false, input_html: { autofocus: true } %>
+    <%= f.button :submit, class: "btn btn-primary w-100" %>
+  <% end %>
+</div>
+<div class="flex-shrink-0 border-top d-flex flex-column gap-3 p-3">
+  <%= link_to "Back", lists_path, class: "btn btn-primary" %>
+</div>
