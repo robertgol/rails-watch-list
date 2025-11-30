@@ -8,15 +8,16 @@
           <div class="card-header">
             <%= movie.title %>
           </div>
-          <div class="">
-            <div class="text-break">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <div class="card-text">
               Overview: <%= movie.overview %>
             </div>
-            <div>
+            <div class="card-text">
               Bookmark comment: <%= bookmark.comment %>
             </div>
-            <div>Rating: <%= movie.rating %></div>
-            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" %>
+            <div class="card-text">Rating: <%= movie.rating %></div>
+            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger w-100" %>
           </div>
         </div>
       </div>

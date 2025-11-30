@@ -61,14 +61,15 @@ export default class extends Controller {
     movies.forEach(movie => {
       const item = document.createElement("a")
       item.className = "dropdown-item"
+      item.style.whiteSpace = "normal"
       item.dataset.action = "click->tmdb-search#select"
       item.dataset.movie = JSON.stringify(movie)
       const posterUrl = this.posterUrl(movie.poster_path)
       item.innerHTML = `
         <div class="d-flex">
-          <img src="${posterUrl}" width="46" height="69" class="rounded me-3" alt="${movie.title}">
+          <img src="${posterUrl}" width="46" height="69" class="rounded me-3" alt="${movie.title}" style="flex-shrink: 0;">
           <div>
-            <div class="fw-semibold text-break">${movie.title}</div>
+            <div class="fw-semibold">${movie.title}</div>
             <small class="text-muted">${movie.release_date?.substring(0,4) || "Unknown year"}</small>
           </div>
         </div>
