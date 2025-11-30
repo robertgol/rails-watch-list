@@ -118,7 +118,7 @@ export default class extends Controller {
         })
       })
 
-      if (!response.ok) throw new Error("Creation failed")
+      if (!response.ok) throw new Error("Creation failed: " + await response.json().errors)
 
       const createdMovie = await response.json()
       this.movieTarget.innerHTML = `
