@@ -1,11 +1,11 @@
 <div class="flex-grow-1 p-3 gap-3 d-flex flex-column">
-  <h1>Add a movie to <%= @list.name %></h1>
+  <h2 class="m-0">Add a movie to <%= @list.name %></h1>
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <div data-controller="tmdb-search">
-      <div>
+      <div class="position-relative">
         <div>Select a movie</div>
         <input type="text" class="form-control " placeholder="The godfather..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
-        <div class="dropdown-menu shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; display: none;">
+        <div class="dropdown-menu w-100 shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; display: none; scrollbar-width: none;">
           <!-- Items will be injected here by the controller -->
         </div>
       </div>

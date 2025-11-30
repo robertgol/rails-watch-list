@@ -67,15 +67,17 @@ export default class extends Controller {
       item.innerHTML = `
         <div class="d-flex">
           <img src="${posterUrl}" width="46" height="69" class="rounded me-3" alt="${movie.title}">
-          <div class="overflow-hidden">
-            <div class="fw-semibold text-truncate">${movie.title}</div>
+          <div>
+            <div class="fw-semibold text-break">${movie.title}</div>
             <small class="text-muted">${movie.release_date?.substring(0,4) || "Unknown year"}</small>
           </div>
         </div>
       `
       this.resultsTarget.appendChild(item)
     });
-    this.resultsTarget.style.display = "block"
+    if (movies.length) {
+      this.resultsTarget.style.display = "block"
+    }
   }
 
   posterUrl(posterPath) {
