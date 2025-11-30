@@ -3,22 +3,18 @@
   <div class="row g-3">
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4">
         <div class="card h-100">
-          <div class="card-header">
-            <%= movie.title %>
+          <div class="poster-wrapper">
+            <img src="<%= movie.poster_url %>" class="poster-image" alt="<%= movie.title %>">
           </div>
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <div class="card-text">
-              Overview: <%= movie.overview %>
+          <div class="p-3 h-100">
+            <div>Rating: <%= movie.rating %></div>
+            <div class="m-0 fw-bold">
+              <%= movie.title %>
             </div>
-            <div class="card-text">
-              Bookmark comment: <%= bookmark.comment %>
-            </div>
-            <div class="card-text">Rating: <%= movie.rating %></div>
-            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger w-100" %>
           </div>
+          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger text-white w-100" %>
         </div>
       </div>
     <% end %>

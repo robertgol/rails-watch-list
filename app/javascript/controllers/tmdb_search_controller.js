@@ -83,7 +83,7 @@ export default class extends Controller {
 
   posterUrl(posterPath) {
     return posterPath
-      ? `https://image.tmdb.org/t/p/w92${posterPath}`
+      ? `https://image.tmdb.org/t/p/original${posterPath}`
       : '/images/missing-poster.jpg';
   }
 
@@ -115,7 +115,7 @@ export default class extends Controller {
             tmdb_id: movie.id,
             title: movie.title,
             overview: overview,
-            poster_path: movie.poster_path,
+            poster_url: posterUrl,
             rating: movie.vote_average
           }
         })
@@ -125,14 +125,16 @@ export default class extends Controller {
 
       const createdMovie = await response.json()
       this.movieTarget.innerHTML = `
-        <div class="d-flex align-items-center mt-3">
-          <img src="${posterUrl}" class="rounded me-3" width="46" height="69" alt=" $${createdMovie.title}">
-          <div>
-            <div class="fw-semibold">${createdMovie.title}</div>
+        <div class="card h-100 d-flex flex-column" style="max-width: 300px;">
+          <div class="card-img-top-container d-flex justify-content-center align-items-center p-3" style="flex: 1 1 auto; min-height: 0; overflow: hidden;">
+            <img src="${posterUrl}" class="img-fluid rounded" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="${createdMovie.title}">
+          </div>
+          <div class="card-body flex-shrink-0 text-center">
+            <h5 class="card-title mb-0">${createdMovie.title}</h5>
             <input type="hidden" name="bookmark[movie_id]" value="${createdMovie.id}">
           </div>
         </div>
-      `
+      `;
       this.inputTarget.value = ''
       this.submitTarget.disabled = false
     } catch (error) {

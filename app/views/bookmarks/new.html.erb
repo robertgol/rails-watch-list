@@ -1,19 +1,24 @@
-<div class="flex-grow-1 p-3 gap-3 d-flex flex-column">
-  <h2 class="m-0">Add a movie to <%= @list.name %></h1>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <div data-controller="tmdb-search">
-      <div class="position-relative">
-        <div>Select a movie</div>
-        <input type="text" class="form-control " placeholder="The godfather..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
-        <div class="dropdown-menu w-100 shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; display: none; scrollbar-width: none;">
-          <!-- Items will be injected here by the controller -->
+<div class="h-100 p-3 gap-3 d-flex flex-column">
+  <h2 class="m-0 text-center">Add a movie to <%= @list.name %></h1>
+  <%= simple_form_for [@list, @bookmark], html: { class: "d-flex flex-column flex-grow-1", style: "min-height: 0;" } do |f| %>
+    <div data-controller="tmdb-search" class="d-flex flex-column gap-3 text-center flex-grow-1" style="min-height: 0;">
+      <div class="flex-shrink-0">
+        <div>Find a movie</div>
+        <div class="position-relative">
+          <input type="text" class="form-control " placeholder="Start typing..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
+          <div class="dropdown-menu w-100 shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; display: none; scrollbar-width: none;">
+            <!-- Items will be injected here by the controller -->
+          </div>
         </div>
       </div>
-      <div data-tmdb-search-target="movie">
+      <div class="flex-grow-1 d-flex align-items-center justify-content-center" data-tmdb-search-target="movie" style="min-height: 0; overflow: auto;">
+        <!-- Selected movie will be injected here by the controller -->
       </div>
-      <%= f.input :comment %>
-      <%= f.button :submit, "Add movie", class: "btn btn-primary w-100", disabled: true, data: { tmdb_search_target: "submit" } %>
+      <div class="flex-shrink-0">
+        <%= f.input :comment %>
+        <%= f.button :submit, "Add movie", class: "btn btn-primary w-100", disabled: true, data: { tmdb_search_target: "submit" } %>
+      </div>
     </div>
   <% end %>
-  <%= link_to "Back", list_path(@list), class: "btn btn-primary w-100" %>
+  <%= link_to "Back", list_path(@list), class: "btn btn-primary w-100 flex-shrink-0" %>
 </div>

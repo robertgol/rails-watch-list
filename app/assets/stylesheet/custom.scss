@@ -1,4 +1,27 @@
-.h-screen-dvh {
-  height: 100dvh;        /* dynamic viewport height - the modern standard */
-  min-height: 100dvh;
+.poster-wrapper {
+  height: 60dvh;
+  min-height: 60dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
+// // Tablet and up
+// @media (min-width: 576px) {
+//   .poster-wrapper {
+//     height: 400px;
+//   }
+// }
+
+// Desktop and up (optional – only if you want even taller posters on large screens)
+@media (min-width: 992px) {
+  .poster-wrapper {
+    height: 45dvh;
+    min-height: 45dvh;
+  }
+}
+
+.poster-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
