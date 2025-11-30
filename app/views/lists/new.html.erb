@@ -1,5 +1,5 @@
 <div class="flex-grow-1 d-flex flex-column text-center p-3 justify-content-end">
-  <h2 class="mb-0">New List</h1>
+  <h2 class="m-0">New List</h1>
   <%= simple_form_for @list do |f| %>
     <%= f.input :name, label: "What's the name of your list?", required: false, input_html: { autofocus: true } %>
     <%= f.button :submit, class: "btn btn-primary w-100" %>
