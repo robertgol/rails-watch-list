@@ -74,3 +74,5 @@ gem "sassc-rails"
 gem "standard", "~> 1.52"
 
 gem "hotwire_combobox", "~> 0.4.0"
+
+gem "devise", "~> 4.9"
