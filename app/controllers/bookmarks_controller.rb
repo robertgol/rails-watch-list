@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
-  before_action :set_list, only: [:new, :create]
+  before_action :set_list
+  before_action :ensure_list_owner!
+
   def new
     @bookmark = Bookmark.new
   end
@@ -9,7 +11,6 @@ class BookmarksController < ApplicationController
     @bookmark.list = @list
     if @bookmark.save
       redirect_to list_path(@list)
-
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,7 +19,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to list_path(@bookmark.list), status: :see_other
+    redirect_to @list, status: :see_other
   end
 
   private
@@ -29,5 +30,11 @@ class BookmarksController < ApplicationController
 
   def set_list
     @list = List.find(params[:list_id])
+  end
+
+  def ensure_list_owner!
+    unless @list.user == current_user
+      redirect_to @list, alert: "You can only add movies to your own lists."
+    end
   end
 end

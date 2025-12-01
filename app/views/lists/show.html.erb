@@ -1,5 +1,5 @@
-<h2 class="m-0 pt-3 px-3"><%= @list.name %></h1>
-<div class="flex-grow-1 p-3 overflow-y-auto overflow-x-hidden" style="scrollbar-width: none;">
+<h2 class="m-0 p-3 text-center"><%= @list.name %></h1>
+<div class="flex-grow-1 px-3 overflow-y-auto overflow-x-hidden" style="scrollbar-width: none;">
   <div class="row g-3">
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
@@ -21,6 +21,8 @@
   </div>
 </div>
 <div class="flex-shrink-0 border-top d-flex flex-column gap-3 p-3">
-  <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  <% if @list.user == current_user %>
+    <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  <% end %>
   <%= link_to "Back", lists_path, class: "btn btn-primary" %>
 </div>

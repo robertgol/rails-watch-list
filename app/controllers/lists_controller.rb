@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @lists = List.all
   end
@@ -8,13 +10,13 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
+    @list = current_user.lists.new
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
     if @list.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: "List created successfully!"
     else
       render :new, status: :unprocessable_entity
     end
