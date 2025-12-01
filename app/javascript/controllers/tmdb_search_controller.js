@@ -126,7 +126,7 @@ export default class extends Controller {
       const createdMovie = await response.json()
       this.movieTarget.innerHTML = `
         <div class="d-flex flex-column" style="max-width: 300px; max-height: 100%; width: 100%;">
-          <div class="d-flex justify-content-center align-items-center" style="flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 1rem;">
+          <div class="d-flex justify-content-center align-items-center" style="flex: 1 1 auto; min-height: 0; overflow: hidden;">
             <img src="${posterUrl}" class="img-fluid rounded" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="${createdMovie.title}">
           </div>
           <div class="flex-shrink-0 text-center" style="padding: 0 1rem 1rem 1rem;">

@@ -1,12 +1,12 @@
-<div class="p-3 gap-3 d-flex flex-column" style="height: 100vh; height: 100dvh; overflow: hidden;">
+<div class="p-3 gap-3 d-flex flex-column" style="height: 100dvh; overflow: hidden;">
   <h2 class="m-0 text-center flex-shrink-0">Add a movie to <%= @list.name %></h1>
   <%= simple_form_for [@list, @bookmark], html: { class: "d-flex flex-column flex-grow-1", style: "min-height: 0; overflow: hidden;" } do |f| %>
     <div data-controller="tmdb-search" class="d-flex flex-column gap-3 text-center flex-grow-1" style="min-height: 0; overflow: hidden;">
       <div class="flex-shrink-0">
         <div class="pb-2">Find a movie</div>
-        <div class="position-relative" style="padding: 0 4px;">
-          <input type="text" class="form-control " placeholder="Start typing..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
-          <div class="dropdown-menu w-100 shadow border-0 mt-1" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; display: none; scrollbar-width: none;">
+        <div class="position-relative">
+          <input type="text" class="form-control" placeholder="Start typing..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
+          <div class="dropdown-menu w-100 shadow border-0" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; display: none; scrollbar-width: none;">
             <!-- Items will be injected here by the controller -->
           </div>
         </div>
@@ -15,7 +15,7 @@
         <!-- Selected movie will be injected here by the controller -->
       </div>
       <div class="flex-shrink-0">
-        <div style="padding: 0 4px;">
+        <div>
           <%= f.input :comment %>
         </div>
         <%= f.button :submit, "Add movie", class: "btn btn-primary w-100", disabled: true, data: { tmdb_search_target: "submit" } %>
