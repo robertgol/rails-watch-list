@@ -5,7 +5,9 @@
       <div class="flex-shrink-0">
         <div class="pb-2">Find a movie</div>
         <div class="position-relative">
-          <input type="text" class="form-control" placeholder="Start typing..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
+          <div class="px-2">
+            <input type="text" class="form-control" placeholder="Start typing..." autocomplete="off" autofocus data-tmdb-search-target="input" data-action="input->tmdb-search#debouncedSearch">
+          </div>
           <div class="dropdown-menu w-100 shadow border-0" data-tmdb-search-target="results" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; display: none; scrollbar-width: none;">
             <!-- Items will be injected here by the controller -->
           </div>
@@ -15,7 +17,7 @@
         <!-- Selected movie will be injected here by the controller -->
       </div>
       <div class="flex-shrink-0">
-        <div>
+        <div class="px-2">
           <%= f.input :comment %>
         </div>
         <%= f.button :submit, "Add movie", class: "btn btn-primary w-100", disabled: true, data: { tmdb_search_target: "submit" } %>
