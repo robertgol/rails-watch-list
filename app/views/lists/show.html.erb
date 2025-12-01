@@ -14,7 +14,9 @@
               <%= movie.title %>
             </small>
           </div>
-          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger text-white w-100" %>
+          <% if @list.user == current_user %>
+            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete w-100" %>
+          <% end %>
         </div>
       </div>
     <% end %>

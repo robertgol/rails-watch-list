@@ -23,3 +23,14 @@
   height: 100dvh;
   min-height: 100dvh;
 }
+
+.btn-delete {
+  background-color: $primary;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #ff1744;
+  color: white;
+  box-shadow: 0 0 4px 2px rgba(255, 23, 68, 0.4); /* optional glow */
+}
