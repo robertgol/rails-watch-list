@@ -1,22 +1,15 @@
 .poster-wrapper {
-  height: 60dvh;
-  min-height: 60dvh;
+  height: 30dvh;
+  min-height: 30dvh;
   width: 100%;
   overflow: hidden;
 }
 
-// // Tablet and up
-// @media (min-width: 576px) {
-//   .poster-wrapper {
-//     height: 400px;
-//   }
-// }
-
 // Desktop and up (optional – only if you want even taller posters on large screens)
-@media (min-width: 992px) {
+@media (min-width: 420px) {
   .poster-wrapper {
-    height: 45dvh;
-    min-height: 45dvh;
+    height: 40dvh;
+    min-height: 40dvh;
   }
 }
 
@@ -24,4 +17,9 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.h-screen-dvh {
+  height: 100dvh;
+  min-height: 100dvh;
 }
