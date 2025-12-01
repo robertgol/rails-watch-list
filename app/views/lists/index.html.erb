@@ -12,6 +12,8 @@
     <% end %>
   </div>
 </div>
-<div class="flex-shrink-0 border-top d-flex flex-column gap-3 p-3">
-  <%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
-</div>
+<% if user_signed_in? %>
+  <div class="flex-shrink-0 border-top d-flex flex-column gap-3 p-3">
+    <%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
