@@ -22,9 +22,23 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    ensure_list_owner!
+
+    @list.destroy
+    redirect_to lists_path, status: :see_other
+  end
+
   private
 
   def list_params
     params.require(:list).permit(:name)
+  end
+
+  def ensure_list_owner!
+    unless @list.user == current_user
+      redirect_to lists_path, alert: "You can only delete your own lists."
+    end
   end
 end

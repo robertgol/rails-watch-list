@@ -7,6 +7,9 @@
             <%= list.name %>
           </div>
           <%= link_to "Details", list_path(list), class: "btn btn-primary" %>
+          <% if list.user == current_user %>
+            <%= link_to "Delete", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete w-100" %>
+          <% end %>
         </div>
       </div>
     <% end %>
